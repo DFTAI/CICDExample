@@ -1,5 +1,11 @@
 pr:
-- master
+  autoCancel: true
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - /website
 
 pool:
   name: Hosted VS2017

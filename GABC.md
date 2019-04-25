@@ -597,7 +597,7 @@ CI/CD the right way<!-- .element class="title__tagline" -->
     <h1 class="intro__title">Super Cool Website</h1>
 
     <ul class="definition__list">
-        <li class="demo__listItem fragment fade-right">Repo hosted on <img style="height: 1em" data-src="assets/github.png"> rdbartram/GABC_CICD</li>
+        <li class="demo__listItem fragment fade-right">Repo hosted on <img style="height: 1em" data-src="assets/github.png"> DFTAI/CICDExample</li>
         <li class="demo__listItem fragment fade-right">Hosted in <img style="height: 1.5em" data-src="assets/azure_blue.svg"></li>
         <li class="demo__listItem fragment fade-right">Deployed and tested with PowerShell in <img style="height: 1.5em" data-src="assets/azdevops.svg"></li>
     </ul>
