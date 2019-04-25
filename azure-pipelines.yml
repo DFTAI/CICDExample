@@ -2,24 +2,33 @@ pr:
   autoCancel: true
   branches:
     include:
-    - master
+      - master
   paths:
     include:
-    - /website
+      - /website
+
+trigger:
+  batch: true
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - /website
 
 pool:
   name: Hosted VS2017
 
 steps:
-- task: GitVersion@4
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: '.build.ps1 -Tasks Test -ResolveDependency'
-- task: PublishTestResults@2
-  inputs:
-    testRunner: 'NUnit'
-    testResultsFiles: '**/TEST-*.xml'
-- task: PublishPipelineArtifact@0
-  inputs:
-    targetPath: 'BuildOutput\\'
+  - task: GitVersion@4
+  - task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: '.build.ps1 -Tasks Test -ResolveDependency'
+  - task: PublishTestResults@2
+    inputs:
+      testRunner: 'NUnit'
+      testResultsFiles: '**/TEST-*.xml'
+  - task: PublishPipelineArtifact@0
+    inputs:
+      targetPath: 'BuildOutput\\'
