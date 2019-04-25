@@ -2,12 +2,20 @@ body {
 }
 
 h1 {
-    color: #C26356;
-    font-size: 30px;
-    font-family: Menlo, Monaco, fixed-width;
+  color: #c26356;
+  font-size: 30px;
+  font-family: Menlo, Monaco, fixed-width;
 }
 
 p {
-    color: white;
-    font-family: "Source Code Pro", Menlo, Monaco, fixed-width;
+  color: white;
+  font-family: 'Source Code Pro', Menlo, Monaco, fixed-width;
+}
+
+.center {
+  text-align: center;
+}
+
+.header {
+  padding-top: 15vh;
 }

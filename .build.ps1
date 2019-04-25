@@ -86,7 +86,7 @@ process {
 
         $html = Get-Content $PSScriptRoot\website\index.html -Raw
 
-        $NewHtml = $html -replace '{{ version }}', (gitversion | convertfrom-json).semver
+        $NewHtml = $html -replace '{{ version }}', $env:GITVERSION_SEMVER
 
         Set-Content $PSScriptRoot\BuildOutput\index.html -Value $NewHtml -Force
     }
@@ -107,16 +107,12 @@ process {
 
     task GitVersion -before BuildWebsite -If ((get-command gitversion -ErrorAction SilentlyContinue) -and -not $env:SYSTEM_ACCESSTOKEN) {
         $gitVersionInfo = GitVersion | ConvertFrom-Json
-        $env:GITVERSION_MajorMinorPatch = $gitVersionInfo.MajorMinorPatch
-        $env:GITVERSION_NuGetPreReleaseTagV2 = $gitVersionInfo.NuGetPreReleaseTagV2
-        $env:GITVERSION_NuGetVersionV2 = $gitVersionInfo.NuGetVersionV2
+        $env:GITVERSION_SemVer = $gitVersionInfo.SemVer
     }
 
     task FakeGitVersion -before BuildWebsite -If (-not (get-command gitversion -ErrorAction SilentlyContinue) -and -not $env:SYSTEM_ACCESSTOKEN) {
         Write-Warning 'gitversion was not found. The supplied version is a default and not necessarily useful'
-        $env:GITVERSION_MajorMinorPatch = "1.0.0"
-        $env:GITVERSION_NuGetPreReleaseTagV2 = ""
-        $env:GITVERSION_NuGetVersionV2 = "1.0.0"
+        $env:GITVERSION_SemVer = "1.0.0"
     }
 }
 
